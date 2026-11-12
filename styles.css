@@ -897,6 +897,10 @@ html:not(.sail-on) .sail__content {
   .call-bubble {
     display: grid;
   }
+
+  .sail__intro {
+    padding-right: 88px;
+  }
 }
 
 @media (max-aspect-ratio: 1/1) {
