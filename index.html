@@ -15,7 +15,13 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/manrope-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <link rel="preload" href="media/frames/1280/000.webp" as="image" media="(prefers-reduced-motion: no-preference) and (min-width: 901px)">
+  <link rel="preload" href="media/frames/960/000.webp" as="image" media="(prefers-reduced-motion: no-preference) and (max-width: 900px)">
+  <script>
+    document.documentElement.classList.add("js");
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("sail-on");
+  </script>
+  <script defer src="hero.js"></script>
   <script defer src="main.js"></script>
   <script type="application/ld+json">
   {
@@ -86,21 +92,29 @@
   </div>
 
   <main id="tresc">
-    <section class="hero" id="start" aria-labelledby="hero-title">
-      <div class="wrap hero__grid">
-        <div>
-          <p class="eyebrow">Oddział Żeglarsko-Motorowodny PTTK „Morka”</p>
-          <h1 id="hero-title">Żeglujemy po Wiśle w&nbsp;Płocku od 1963 roku</h1>
-          <p class="lead">Przystań przy ul. Rybaki 10, na 633 km Wisły. Organizujemy szkolenia żeglarskie, rejsy, regaty i&nbsp;spotkania towarzyskie.</p>
-          <div class="actions">
-            <a class="button" href="tel:+48516067215">Zadzwoń do bosmana</a>
-            <a class="button button--ghost" href="#imprezy">Kalendarz imprez <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <figure class="hero__photo">
-          <img src="img/regaty.webp" width="1000" height="705" alt="Załoga jachtu wychylona za burtę podczas regat na Wiśle">
-        </figure>
+    <section class="sail" id="start" aria-labelledby="hero-title" data-sail>
+      <div class="sail__media">
+        <canvas class="sail__ambient" width="32" height="18" aria-hidden="true"></canvas>
+        <canvas class="sail__frames" width="1280" height="720" aria-hidden="true"></canvas>
+        <img class="sail__still" src="media/frames/1280/071.webp" width="1280" height="720" loading="lazy" alt="Jacht z postawionym żaglem">
       </div>
+      <div class="sail__veil"></div>
+      <div class="sail__intro">
+        <p>Oddział Żeglarsko-Motorowodny PTTK „Morka” · Płock</p>
+        <button class="sail__skip" type="button">Pomiń animację</button>
+      </div>
+      <div class="sail__content">
+        <p class="eyebrow">Oddział Żeglarsko-Motorowodny PTTK „Morka”</p>
+        <h1 id="hero-title">Żeglujemy po Wiśle w&nbsp;Płocku od 1963 roku</h1>
+        <p class="lead">Przystań przy ul. Rybaki 10, na 633 km Wisły. Organizujemy szkolenia żeglarskie, rejsy, regaty i&nbsp;spotkania towarzyskie.</p>
+        <div class="actions">
+          <a class="button" href="tel:+48516067215">Zadzwoń do bosmana</a>
+          <a class="button button--ghost" href="#imprezy">Kalendarz imprez <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts-band" id="fakty" aria-label="Morka w liczbach">
       <div class="wrap">
         <dl class="facts">
           <div><dt>Od roku</dt><dd>1963</dd></div>
