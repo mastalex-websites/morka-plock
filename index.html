@@ -5,23 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Klub żeglarski Morka w Płocku | Oddział Żeglarsko-Motorowodny PTTK</title>
   <meta name="description" content="Oddział Żeglarsko-Motorowodny PTTK „Morka” w Płocku. Przystań przy ul. Rybaki 10, kursy żeglarskie i motorowodne, szkółka dla dzieci, regaty i rejsy po Wiśle.">
-  <meta name="theme-color" content="#123a5f">
+  <meta name="theme-color" content="#0a2a45">
   <link rel="canonical" href="https://www.morka-plock.pl/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:title" content="Klub żeglarski Morka w Płocku">
   <meta property="og:description" content="Przystań przy ul. Rybaki 10, kursy żeglarskie i motorowodne, regaty i rejsy po Wiśle.">
-  <meta property="og:image" content="https://www.morka-plock.pl/img/regaty.webp">
-  <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/manrope-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <meta property="og:image" content="https://www.morka-plock.pl/img/hero.webp">
+  <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="media/frames/1280/000.webp" as="image" media="(prefers-reduced-motion: no-preference) and (min-width: 901px)">
   <link rel="preload" href="media/frames/960/000.webp" as="image" media="(prefers-reduced-motion: no-preference) and (max-width: 900px)">
+  <link rel="stylesheet" href="styles.css">
   <script>
     document.documentElement.classList.add("js");
-    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("sail-on");
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("sail-on", "draw-on");
   </script>
   <script defer src="hero.js"></script>
+  <script defer src="marina.js"></script>
   <script defer src="main.js"></script>
   <script type="application/ld+json">
   {
@@ -55,11 +56,11 @@
 
       <nav class="nav" aria-label="Menu główne">
         <ul>
-          <li><a href="#aktualnosci">Aktualności</a></li>
+          <li><a href="#o-klubie">O klubie</a></li>
           <li><a href="#szkolenia">Szkolenia</a></li>
           <li><a href="#przystan">Przystań</a></li>
           <li><a href="#imprezy">Imprezy</a></li>
-          <li><a href="#o-klubie">O klubie</a></li>
+          <li><a href="#aktualnosci">Aktualności</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav>
@@ -80,11 +81,11 @@
     </div>
     <nav aria-label="Menu mobilne">
       <ul class="menu__list">
-        <li><a href="#aktualnosci">Aktualności</a></li>
+        <li><a href="#o-klubie">O klubie</a></li>
         <li><a href="#szkolenia">Szkolenia</a></li>
         <li><a href="#przystan">Przystań</a></li>
         <li><a href="#imprezy">Imprezy</a></li>
-        <li><a href="#o-klubie">O klubie</a></li>
+        <li><a href="#aktualnosci">Aktualności</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
@@ -96,7 +97,7 @@
       <div class="sail__media">
         <canvas class="sail__ambient" width="32" height="18" aria-hidden="true"></canvas>
         <canvas class="sail__frames" width="1280" height="720" aria-hidden="true"></canvas>
-        <img class="sail__still" src="media/frames/1280/071.webp" width="1280" height="720" loading="lazy" alt="Jacht z postawionym żaglem">
+        <img class="sail__still" src="img/hero.webp" width="1280" height="720" loading="lazy" alt="Jacht z postawionym żaglem na wodzie, widok z góry">
       </div>
       <div class="sail__veil"></div>
       <div class="sail__intro">
@@ -104,32 +105,202 @@
         <button class="sail__skip" type="button">Pomiń animację</button>
       </div>
       <div class="sail__content">
-        <p class="eyebrow">Oddział Żeglarsko-Motorowodny PTTK „Morka”</p>
-        <h1 id="hero-title">Żeglujemy po Wiśle w&nbsp;Płocku od 1963 roku</h1>
-        <p class="lead">Przystań przy ul. Rybaki 10, na 633 km Wisły. Organizujemy szkolenia żeglarskie, rejsy, regaty i&nbsp;spotkania towarzyskie.</p>
+        <p class="sail__eyebrow">Oddział Żeglarsko-Motorowodny PTTK „Morka”</p>
+        <h1 class="display" id="hero-title">Żeglujemy po Wiśle w&nbsp;Płocku od 1963 roku</h1>
+        <p class="sail__lead">Przystań przy ul. Rybaki 10, na 633 km Wisły. Organizujemy szkolenia żeglarskie, rejsy, regaty i&nbsp;spotkania towarzyskie.</p>
         <div class="actions">
-          <a class="button" href="tel:+48516067215">Zadzwoń do bosmana</a>
-          <a class="button button--ghost" href="#imprezy">Kalendarz imprez <span aria-hidden="true">→</span></a>
+          <a class="button button--dark" href="tel:+48516067215">Zadzwoń do bosmana</a>
+          <a class="button button--outline" href="#imprezy">Kalendarz imprez</a>
         </div>
       </div>
     </section>
 
-    <section class="facts-band" id="fakty" aria-label="Morka w liczbach">
+    <section class="about" id="o-klubie" aria-labelledby="about-title">
+      <div class="wrap about__grid">
+        <h2 class="display" id="about-title" data-reveal>O klubie</h2>
+        <div class="about__text" data-reveal>
+          <p>Stanicę przy ul. Rybaki 10 ukończono w 1961 roku. Stoi na nasypie o powierzchni 3000 m², wbudowanym między dwie główki na Wiśle, a jej słupowo-szkieletowa konstrukcja przetrwała nawet zimową powódź zatorową w 1982 roku.</p>
+          <p>W 1963 roku pracownicy budowanego kombinatu petrochemicznego dostali pierwsze żaglówki i rozegrali na Wiśle pierwsze regaty. Jesienią 1964 roku sekcja przyjęła nazwę Klub Wodniaków „Morka”. Dziś jako Oddział Żeglarsko-Motorowodny PTTK szkolimy kolejne pokolenia żeglarzy i organizujemy regaty o Puchar Wrzosu.</p>
+        </div>
+      </div>
+      <div class="wrap about__photos">
+        <figure data-reveal>
+          <img src="img/stanica.webp" width="550" height="406" loading="lazy" decoding="async" alt="Stanica przy ul. Rybaki 10 na dawnej fotografii, w tle Wzgórze Tumskie">
+          <figcaption>Stanica na dawnej fotografii</figcaption>
+        </figure>
+        <figure data-reveal>
+          <img src="img/jubileusz.webp" width="800" height="1205" loading="lazy" decoding="async" alt="Pamiątkowy dzwon z okazji 50-lecia Morki obok klubowego sztandaru">
+          <figcaption>Dzwon i sztandar z 50-lecia klubu</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Szkolenia żeglarskie</span><span>Rejsy</span><span>Imprezy żeglarskie</span><span>Spotkania towarzyskie</span>
+        <span>Szkolenia żeglarskie</span><span>Rejsy</span><span>Imprezy żeglarskie</span><span>Spotkania towarzyskie</span>
+      </div>
+    </div>
+
+    <section class="section" id="szkolenia" aria-labelledby="training-title">
       <div class="wrap">
-        <dl class="facts">
-          <div><dt>Od roku</dt><dd>1963</dd></div>
-          <div><dt>Kilometr Wisły</dt><dd>633</dd></div>
-          <div><dt>Regaty o Puchar Wrzosu</dt><dd>56. edycja</dd></div>
+        <div class="section__head section__head--row">
+          <h2 class="display" id="training-title" data-reveal>Szkolenia na wodzie</h2>
+          <div class="scroller-nav" aria-hidden="true">
+            <button class="scroller-nav__button" type="button" tabindex="-1" data-scroll="training" data-direction="-1">←</button>
+            <button class="scroller-nav__button" type="button" tabindex="-1" data-scroll="training" data-direction="1">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="scroller" id="training" tabindex="0" aria-label="Szkolenia">
+        <article class="course">
+          <img class="course__image" src="img/szkolenia.webp" width="800" height="531" loading="lazy" decoding="async" alt="Młodzi żeglarze na łódce klasy 29er z czerwonym spinakerem">
+          <div class="course__head">
+            <h3>Kurs żeglarski</h3>
+            <span>Grzegorz Serejko</span>
+          </div>
+          <p>Przygotowanie do egzaminu na patent żeglarza jachtowego: zajęcia teoretyczne i praktyka na Wiśle.</p>
+          <a class="button button--outline" href="tel:+48606884482">Zadzwoń: 606 884 482</a>
+        </article>
+        <article class="course">
+          <img class="course__image" src="img/regaty.webp" width="1000" height="705" loading="lazy" decoding="async" alt="Załoga jachtu wychylona za burtę podczas regat">
+          <div class="course__head">
+            <h3>Szkółka żeglarska</h3>
+            <span>Leszek Bartosik</span>
+          </div>
+          <p>Zajęcia dla dzieci i młodzieży. Latem prowadzimy półkolonie żeglarskie dla dzieci w wieku 6–15 lat.</p>
+          <a class="button button--outline" href="tel:+48601373232">Zadzwoń: 601 373 232</a>
+        </article>
+        <article class="course">
+          <img class="course__image" src="img/motorowodny.webp" width="1280" height="850" loading="lazy" decoding="async" alt="Ponton z załogą w kamizelkach ratunkowych płynący po Wiśle">
+          <div class="course__head">
+            <h3>Kurs motorowodny</h3>
+            <span>Michał Misiak</span>
+          </div>
+          <p>Szkolenie na uprawnienia do prowadzenia łodzi motorowych.</p>
+          <a class="button button--outline" href="tel:+48500268104">Zadzwoń: 500 268 104</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="races-title">
+      <div class="wrap">
+        <h2 class="display" id="races-title" data-reveal>Gdzie się ścigamy</h2>
+        <div class="races">
+          <figure class="race" data-reveal>
+            <img src="img/flotylla.webp" width="1280" height="850" loading="lazy" decoding="async" alt="Flotylla żaglówek na Wiśle w Płocku, w tle dźwigi portu">
+            <figcaption>
+              <strong>Płock, 632–635 km Wisły</strong>
+              <span>56. Regaty o Puchar Wrzosu Prezydenta Miasta Płocka. Klasy T, T1, T2, T3, Omega i Optimist.</span>
+            </figcaption>
+          </figure>
+          <figure class="race race--small" data-reveal>
+            <img src="img/rejsy.webp" width="900" height="652" loading="lazy" decoding="async" alt="Jacht PK 250 pod pełnymi żaglami w pochmurny dzień">
+            <figcaption>
+              <strong>Nowy Duninów, 648–653 km Wisły</strong>
+              <span>Regaty Żeglarskie w cyklu Płockiego Żeglarskiego Grand Prix, z bazą w lokalnym porcie.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="crew-title">
+      <div class="wrap crew__head">
+        <h2 class="display" id="crew-title" data-reveal>Kadra klubu</h2>
+        <p data-reveal>Zapisy na kursy i do szkółki przyjmują bezpośrednio instruktorzy. W sprawach przystani, postoju jachtów i noclegów zadzwoń do bosmana.</p>
+      </div>
+      <div class="crew">
+        <div class="wrap crew__cards">
+          <a class="crew__card" href="tel:+48516067215" data-reveal>
+            <span class="crew__role">Bosman</span>
+            <strong>516 067 215</strong>
+          </a>
+          <a class="crew__card" href="tel:+48606884482" data-reveal>
+            <span class="crew__role">Kurs żeglarski</span>
+            <span>Grzegorz Serejko</span>
+            <strong>606 884 482</strong>
+          </a>
+          <a class="crew__card" href="tel:+48500268104" data-reveal>
+            <span class="crew__role">Kurs motorowodny</span>
+            <span>Michał Misiak</span>
+            <strong>500 268 104</strong>
+          </a>
+          <a class="crew__card" href="tel:+48601373232" data-reveal>
+            <span class="crew__role">Szkółka żeglarska</span>
+            <span>Leszek Bartosik</span>
+            <strong>601 373 232</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="numbers-title">
+      <div class="wrap">
+        <h2 class="display display--small" id="numbers-title" data-reveal>Morka w liczbach</h2>
+        <dl class="numbers">
+          <div data-reveal><dt>Rok powstania klubu</dt><dd data-count="1963">1963</dd></div>
+          <div data-reveal><dt>Kilometr Wisły, na którym stoi przystań</dt><dd data-count="633">633</dd></div>
+          <div data-reveal><dt>Edycja Regat o Puchar Wrzosu</dt><dd data-count="56" data-suffix=".">56.</dd></div>
+          <div data-reveal><dt>Powierzchnia nasypu stanicy</dt><dd data-count="3000" data-suffix=" m²">3000 m²</dd></div>
         </dl>
       </div>
     </section>
 
-    <section class="section" id="aktualnosci" aria-labelledby="news-title">
-      <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">Z życia klubu</p>
-          <h2 id="news-title">Aktualności</h2>
+    <section class="marina" id="przystan" aria-labelledby="marina-title">
+      <div class="marina__pin" data-draw>
+        <div class="marina__stage">
+          <div class="wrap marina__head">
+            <h2 class="display" id="marina-title">Przystań</h2>
+            <p>Przyjmujemy jachty, kampery i&nbsp;namioty także od osób spoza klubu. Ceny dla osób niezrzeszonych na sezon 2026.</p>
+          </div>
+          <div class="marina__art">
+            <svg class="marina__scene" viewBox="0 70 1800 600" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g data-s="0.0" data-e="0.03" stroke-width="2.2" stroke-opacity="1" stroke="#5aa9e6"><path d="M-1500 560L3300 560"/></g><g data-s="0.01" data-e="0.05" stroke-width="1" stroke-opacity="0.3" class="dt"><path d="M592 470C592 410 620 330 700 262C780 228 860 222 920 224C1040 230 1120 270 1200 330C1250 368 1290 420 1320 470"/></g><g data-s="0.03" data-e="0.07" stroke-width="1" stroke-opacity="0.3" class="dt"><rect x="760" y="170" width="120" height="56"/><rect x="766" y="112" width="24" height="58"/><path d="M764 112L778 82L792 112"/><rect x="850" y="112" width="24" height="58"/><path d="M848 112L862 82L876 112"/><path d="M802 170C802 140 838 140 838 170"/></g><g data-s="0.015" data-e="0.045" stroke-width="1.8" stroke-opacity="0.9"><path d="M530 470L1700 470L1760 560"/></g><g data-s="0.03" data-e="0.06" stroke-width="1" stroke-opacity="0.5" class="dt"><circle cx="1780" cy="552" r="9"/><circle cx="1802" cy="556" r="9"/><circle cx="1824" cy="552" r="9"/><circle cx="1846" cy="556" r="9"/></g><g data-s="0.045" data-e="0.065" stroke-width="1.3" stroke-opacity="0.8"><path d="M600 470L600 430"/><path d="M640 470L640 430"/><path d="M680 470L680 430"/><path d="M720 470L720 430"/><path d="M760 470L760 430"/><path d="M800 470L800 430"/><path d="M840 470L840 430"/><path d="M880 470L880 430"/><path d="M920 470L920 430"/><path d="M960 470L960 430"/><path d="M1000 470L1000 430"/></g><g data-s="0.06" data-e="0.072" stroke-width="1.6" stroke-opacity="0.9"><rect x="580" y="418" width="440" height="12"/></g><g data-s="0.068" data-e="0.086" stroke-width="1.8" stroke-opacity="0.9"><rect x="600" y="358" width="120" height="60"/><rect x="720" y="268" width="290" height="150"/><path d="M708 268L1022 260"/></g><g data-s="0.082" data-e="0.1" stroke-width="1.4" stroke-opacity="0.85"><path d="M1000 260L1000 150"/><path d="M1000 168L976 162"/></g><g data-s="0.04" data-e="0.1" stroke-width="0.9" stroke-opacity="0.3" class="dt"><path d="M40 586L68 586"/><path d="M213 586L241 586"/><path d="M386 586L414 586"/><path d="M559 586L587 586"/><path d="M732 586L760 586"/><path d="M905 586L933 586"/><path d="M1078 586L1106 586"/><path d="M1251 586L1279 586"/><path d="M1424 586L1452 586"/><path d="M1597 586L1625 586"/><path d="M137 610L169 610"/><path d="M310 610L342 610"/><path d="M483 610L515 610"/><path d="M656 610L688 610"/><path d="M829 610L861 610"/><path d="M1002 610L1034 610"/><path d="M1175 610L1207 610"/><path d="M1348 610L1380 610"/><path d="M1521 610L1553 610"/><path d="M1694 610L1726 610"/><path d="M147 610L179 610"/><path d="M234 634L270 634"/><path d="M407 634L443 634"/><path d="M580 634L616 634"/><path d="M753 634L789 634"/><path d="M926 634L962 634"/><path d="M1099 634L1135 634"/><path d="M1272 634L1308 634"/><path d="M1445 634L1481 634"/><path d="M1618 634L1654 634"/><path d="M71 634L107 634"/><path d="M244 634L280 634"/><path d="M417 634L453 634"/><path d="M331 658L371 658"/><path d="M504 658L544 658"/><path d="M677 658L717 658"/><path d="M850 658L890 658"/><path d="M1023 658L1063 658"/><path d="M1196 658L1236 658"/><path d="M1369 658L1409 658"/><path d="M1542 658L1582 658"/><path d="M1715 658L1755 658"/><path d="M168 658L208 658"/><path d="M341 658L381 658"/><path d="M514 658L554 658"/><path d="M687 658L727 658"/></g><g data-s="0.1" data-e="0.128" stroke-width="1.6" stroke-opacity="0.9"><path d="M20 550L370 550"/><path d="M20 558L370 558"/></g><g data-s="0.121" data-e="0.1448" stroke-width="1.1" stroke-opacity="0.6"><path d="M36 550L36 594"/><path d="M78 550L78 594"/><path d="M120 550L120 594"/><path d="M162 550L162 594"/><path d="M204 550L204 594"/><path d="M246 550L246 594"/><path d="M288 550L288 594"/><path d="M330 550L330 594"/><path d="M372 550L372 594"/></g><g data-s="0.1308" data-e="0.1532" stroke-width="1" stroke-opacity="0.55" class="dt"><rect x="130" y="546" width="30" height="6"/><rect x="240" y="546" width="30" height="6"/></g><g data-s="0.142" data-e="0.17" stroke-width="1.6" stroke-opacity="0.9"><path d="M37 533.6L137.8 533.6L125 548L46.6 548Z"/><path d="M67.4 533.6L73.8 522.4L104.2 522.4L109 533.6"/></g><g data-s="0.1532" data-e="0.184" stroke-width="1.3" stroke-opacity="0.85"><path d="M85 522.4L85 380"/><path d="M85 508L40.2 511.2"/></g><g data-s="0.163" data-e="0.191" stroke-width="0.9" stroke-opacity="0.5" class="dt"><path d="M85 383.2L134.6 533.6"/></g><g data-s="0.1588" data-e="0.1868" stroke-width="1.6" stroke-opacity="0.9"><path d="M143.4 532.5L251.8 532.5L238 548L153.7 548Z"/><path d="M176.1 532.5L183 520.5L215.6 520.5L220.8 532.5"/></g><g data-s="0.17" data-e="0.2008" stroke-width="1.3" stroke-opacity="0.85"><path d="M195 520.5L195 367.4"/><path d="M195 505L146.8 508.4"/></g><g data-s="0.1798" data-e="0.2078" stroke-width="0.9" stroke-opacity="0.5" class="dt"><path d="M195 370.8L248.3 532.5"/></g><g data-s="0.1756" data-e="0.2036" stroke-width="1.6" stroke-opacity="0.9"><path d="M257 533.6L357.8 533.6L345 548L266.6 548Z"/><path d="M287.4 533.6L293.8 522.4L324.2 522.4L329 533.6"/></g><g data-s="0.1868" data-e="0.2176" stroke-width="1.3" stroke-opacity="0.85"><path d="M305 522.4L305 380"/><path d="M305 508L260.2 511.2"/></g><g data-s="0.1966" data-e="0.2246" stroke-width="0.9" stroke-opacity="0.5" class="dt"><path d="M305 383.2L354.6 533.6"/></g><g data-s="0.177" data-e="0.205" stroke-width="1.6" stroke-opacity="1" stroke="#5aa9e6"><circle cx="195" cy="340" r="17"/></g><g data-f="0.198 0.226"><text x="195" y="346" font-size="15" font-weight="700" text-anchor="middle" fill="#5aa9e6" stroke="none">01</text></g><g data-s="0.24" data-e="0.268" stroke-width="1.8" stroke-opacity="0.9"><path d="M530 470L340 600"/><path d="M530 482L358 600"/></g><g data-s="0.261" data-e="0.282" stroke-width="0.9" stroke-opacity="0.45" class="dt"><path d="M530 470L522 482"/><path d="M507 485.7L499 497.7"/><path d="M484 501.4L476 513.4"/><path d="M461 517.1L453 529.1"/><path d="M438 532.8L430 544.8"/><path d="M415 548.5L407 560.5"/><path d="M392 564.2L384 576.2"/><path d="M369 579.9L361 591.9"/></g><g data-s="0.268" data-e="0.296" stroke-width="1.4" stroke-opacity="0.85"><path d="M548 470L548 432"/><path d="M570 470L570 432"/><rect x="542" y="422" width="34" height="10"/><circle cx="559" cy="448" r="9"/></g><g data-s="0.289" data-e="0.317" stroke-width="1.4" stroke-opacity="0.85"><path d="M398.7 552.2L481.3 495.8"/><circle cx="426.9" cy="540.2" r="9"/></g><g data-s="0.303" data-e="0.331" stroke-width="1.7" stroke-opacity="0.9"><path d="M388.7 551.8L481.2 488.6L460 478.8L382.4 531.9Z"/></g><g data-s="0.3212" data-e="0.345" stroke-width="1" stroke-opacity="0.7"><path d="M559 448L478.9 485.3"/></g><g data-s="0.317" data-e="0.345" stroke-width="1.6" stroke-opacity="1" stroke="#5aa9e6"><circle cx="440" cy="405" r="17"/></g><g data-f="0.338 0.366"><text x="440" y="411" font-size="15" font-weight="700" text-anchor="middle" fill="#5aa9e6" stroke="none">02</text></g><g data-s="0.38" data-e="0.41" stroke-width="1.7" stroke-opacity="0.9"><path d="M1050 458L1050 388Q1050 378 1060 378L1170 378L1196 414L1200 458Z"/></g><g data-s="0.404" data-e="0.428" stroke-width="1.6" stroke-opacity="0.9"><circle cx="1084" cy="458" r="12"/><circle cx="1170" cy="458" r="12"/></g><g data-s="0.422" data-e="0.452" stroke-width="1.1" stroke-opacity="0.7"><path d="M1172 384L1192 412L1172 412Z"/><rect x="1064" y="394" width="34" height="22" rx="3"/><rect x="1108" y="394" width="34" height="22" rx="3"/><rect x="1148" y="400" width="16" height="54" rx="2"/></g><g data-s="0.446" data-e="0.47" stroke-width="1.6" stroke-opacity="1" stroke="#5aa9e6"><circle cx="1124" cy="330" r="17"/></g><g data-f="0.464 0.488"><text x="1124" y="336" font-size="15" font-weight="700" text-anchor="middle" fill="#5aa9e6" stroke="none">03</text></g><g data-s="0.5" data-e="0.536" stroke-width="1.7" stroke-opacity="0.9"><path d="M1250 470L1295 408L1340 470"/><path d="M1360 470L1397 418L1434 470"/></g><g data-s="0.53" data-e="0.56" stroke-width="1.1" stroke-opacity="0.7"><path d="M1295 470L1295 420"/><path d="M1286 470L1295 436L1304 470"/><path d="M1397 470L1397 428"/></g><g data-s="0.548" data-e="0.578" stroke-width="0.9" stroke-opacity="0.5" class="dt"><path d="M1295 408L1232 470"/><path d="M1295 408L1356 466"/><path d="M1397 418L1446 470"/></g><g data-s="0.566" data-e="0.59" stroke-width="1.6" stroke-opacity="1" stroke="#5aa9e6"><circle cx="1330" cy="350" r="17"/></g><g data-f="0.584 0.608"><text x="1330" y="356" font-size="15" font-weight="700" text-anchor="middle" fill="#5aa9e6" stroke="none">04</text></g><g data-s="0.62" data-e="0.669" stroke-width="1.2" stroke-opacity="0.75"><rect x="736" y="346" width="33" height="60"/><rect x="781" y="346" width="33" height="60"/><rect x="826" y="346" width="33" height="60"/><rect x="871" y="346" width="33" height="60"/><rect x="916" y="346" width="33" height="60"/><rect x="961" y="346" width="33" height="60"/><rect x="736" y="282" width="33" height="46"/><rect x="781" y="282" width="33" height="46"/><rect x="826" y="282" width="33" height="46"/><rect x="871" y="282" width="33" height="46"/><rect x="916" y="282" width="33" height="46"/><rect x="961" y="282" width="33" height="46"/></g><g data-s="0.655" data-e="0.683" stroke-width="1.2" stroke-opacity="0.75"><rect x="612" y="372" width="24" height="46"/><rect x="648" y="372" width="24" height="46"/><rect x="684" y="372" width="24" height="46"/></g><g data-s="0.669" data-e="0.704" stroke-width="0.9" stroke-opacity="0.45" class="dt"><path d="M720 334L1010 334"/><path d="M726 334L726 342"/><path d="M738 334L738 342"/><path d="M750 334L750 342"/><path d="M762 334L762 342"/><path d="M774 334L774 342"/><path d="M786 334L786 342"/><path d="M798 334L798 342"/><path d="M810 334L810 342"/><path d="M822 334L822 342"/><path d="M834 334L834 342"/><path d="M846 334L846 342"/><path d="M858 334L858 342"/><path d="M870 334L870 342"/><path d="M882 334L882 342"/><path d="M894 334L894 342"/><path d="M906 334L906 342"/><path d="M918 334L918 342"/><path d="M930 334L930 342"/><path d="M942 334L942 342"/><path d="M954 334L954 342"/><path d="M966 334L966 342"/><path d="M978 334L978 342"/><path d="M990 334L990 342"/><path d="M1002 334L1002 342"/></g><g data-s="0.697" data-e="0.725" stroke-width="1.6" stroke-opacity="1" stroke="#5aa9e6"><circle cx="865" cy="225" r="17"/></g><g data-f="0.718 0.746"><text x="865" y="231" font-size="15" font-weight="700" text-anchor="middle" fill="#5aa9e6" stroke="none">05</text></g><g data-s="0.76" data-e="0.796" stroke-width="1.7" stroke-opacity="0.9"><path d="M1470 458L1470 436Q1472 430 1484 428L1506 426L1528 404L1574 404L1596 426L1612 430Q1620 434 1620 444L1620 458Z"/></g><g data-s="0.79" data-e="0.814" stroke-width="1.6" stroke-opacity="0.9"><circle cx="1500" cy="458" r="12"/><circle cx="1590" cy="458" r="12"/></g><g data-s="0.808" data-e="0.832" stroke-width="1.1" stroke-opacity="0.7"><path d="M1514 426L1532 410L1548 410L1548 426Z"/><path d="M1556 426L1556 410L1572 410L1588 426Z"/></g><g data-s="0.826" data-e="0.85" stroke-width="1.6" stroke-opacity="1" stroke="#5aa9e6"><circle cx="1545" cy="360" r="17"/></g><g data-f="0.844 0.868"><text x="1545" y="366" font-size="15" font-weight="700" text-anchor="middle" fill="#5aa9e6" stroke="none">06</text></g><g data-f="0.88 0.9205"><g fill="#5aa9e6" fill-opacity=".25" stroke="none"><rect x="736" y="346" width="33" height="60"/><rect x="736" y="282" width="33" height="46"/><rect x="781" y="346" width="33" height="60"/><rect x="781" y="282" width="33" height="46"/><rect x="826" y="346" width="33" height="60"/><rect x="826" y="282" width="33" height="46"/><rect x="871" y="346" width="33" height="60"/><rect x="871" y="282" width="33" height="46"/><rect x="916" y="346" width="33" height="60"/><rect x="916" y="282" width="33" height="46"/><rect x="961" y="346" width="33" height="60"/><rect x="961" y="282" width="33" height="46"/></g></g><g data-s="0.898" data-e="0.9295" stroke-width="1.8" stroke-opacity="1" stroke="#5aa9e6"><path d="M1000 154L1060 166L1000 178Z"/></g></svg>
+          </div>
+          <ol class="wrap marina__steps">
+            <li data-s="0.1" data-e="0.24" data-x="195"><span>01</span><strong>Cumowanie jachtu</strong>30 zł / doba</li>
+            <li data-s="0.24" data-e="0.38" data-x="440"><span>02</span><strong>Wodowanie ze slipu</strong>40 zł + 50 zł wyciągarka</li>
+            <li data-s="0.38" data-e="0.5" data-x="1124"><span>03</span><strong>Kamper lub przyczepa</strong>80 zł / doba</li>
+            <li data-s="0.5" data-e="0.62" data-x="1330"><span>04</span><strong>Pole namiotowe</strong>30 zł / doba + 5 zł od osoby</li>
+            <li data-s="0.62" data-e="0.76" data-x="865"><span>05</span><strong>Nocleg w pokoju</strong>50 zł / doba</li>
+            <li data-s="0.76" data-e="0.88" data-x="1545"><span>06</span><strong>Samochód na terenie przystani</strong>30 zł / doba</li>
+          </ol>
         </div>
+      </div>
+      <div class="wrap marina__foot">
+        <p>W cenie postoju sanitariaty, przy kamperach także prąd. Opłata liczona za każdą rozpoczętą dobę.</p>
+        <div class="actions">
+          <a class="button button--light" href="https://www.morka-plock.pl/pliki/2026/cennik2026.pdf">Pełny cennik 2026 (PDF)</a>
+          <a class="button button--outline-light" href="https://www.morka-plock.pl/kamerka">Kamera na żywo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="imprezy" aria-labelledby="events-title">
+      <div class="wrap">
+        <div class="section__head section__head--row">
+          <h2 class="display" id="events-title" data-reveal>Sezon 2026</h2>
+          <div class="scroller-nav" aria-hidden="true">
+            <button class="scroller-nav__button" type="button" tabindex="-1" data-scroll="events" data-direction="-1">←</button>
+            <button class="scroller-nav__button" type="button" tabindex="-1" data-scroll="events" data-direction="1">→</button>
+          </div>
+        </div>
+      </div>
+      <ol class="scroller" id="events" tabindex="0" aria-label="Kalendarz imprez">
+        <li class="event"><time datetime="2026-04-18">18<small>kwietnia</small></time><span>Wodowanie pomostów</span></li>
+        <li class="event"><time datetime="2026-04-25">25<small>kwietnia</small></time><span>Wodowanie jednostek</span></li>
+        <li class="event"><time datetime="2026-05-30">30<small>maja</small></time><span>Parada Żeglarska 50-lecia POZŻ</span></li>
+        <li class="event"><time datetime="2026-07-11">11<small>lipca</small></time><span>Regaty w Nowym Duninowie</span></li>
+        <li class="event"><time datetime="2026-09-05">5<small>września</small></time><span>56. Regaty o Puchar Wrzosu</span></li>
+        <li class="event"><time datetime="2026-09-26">26<small>września</small></time><span>XVII Memoriał Rakowskich</span></li>
+        <li class="event"><time datetime="2026-10-17">17<small>października</small></time><span>Wyciąganie jachtów</span></li>
+        <li class="event"><time datetime="2026-10-24">24<small>października</small></time><span>Wyciąganie pomostów</span></li>
+      </ol>
+    </section>
+
+    <section class="section section--tight" id="aktualnosci" aria-labelledby="news-title">
+      <div class="wrap">
+        <h2 class="display" id="news-title" data-reveal>Aktualności</h2>
         <div class="news">
           <article class="news__item" data-reveal>
             <time datetime="2026-10-07">7 października 2026</time>
@@ -145,147 +316,95 @@
             <time datetime="2026-08-21">21 sierpnia 2026</time>
             <h3>56. Regaty o Puchar Wrzosu Prezydenta Miasta Płocka</h3>
             <p>5 września, Wisła między 632 a 635 km. Zapisy w Biurze Regat od 8:30 do 10:00, wpisowe 50 zł od jachtu (Optimist bez opłaty). Klasy T, T1, T2, T3, Omega i Optimist.</p>
-            <a class="link" href="https://www.morka-plock.pl/pliki/2026/wrzos-56-zawiadomienie.pdf">Zawiadomienie o regatach (PDF) <span aria-hidden="true">↗</span></a>
+            <a class="link" href="https://www.morka-plock.pl/pliki/2026/wrzos-56-zawiadomienie.pdf">Zawiadomienie o regatach (PDF)</a>
           </article>
           <article class="news__item" data-reveal>
             <time datetime="2026-07-06">6 lipca 2026</time>
             <h3>Regaty Żeglarskie Nowy Duninów</h3>
             <p>11 lipca, Wisła między 648 a 653 km. Zapisy od 8:00 do 9:30, wpisowe 100 zł od jachtu. Cztery wyścigi w klasach T, T-1, T-2, T-3, Omega i Optimist Open, w cyklu Płockiego Żeglarskiego Grand Prix.</p>
-            <a class="link" href="https://www.morka-plock.pl/pliki/2026/duninow_2026.pdf">Zawiadomienie o regatach (PDF) <span aria-hidden="true">↗</span></a>
+            <a class="link" href="https://www.morka-plock.pl/pliki/2026/duninow_2026.pdf">Zawiadomienie o regatach (PDF)</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section--tint" id="szkolenia" aria-labelledby="training-title">
-      <div class="wrap split">
-        <div>
-          <div class="section__head">
-            <p class="eyebrow">Szkolenia</p>
-            <h2 id="training-title">Nauczysz się u nas pływać pod żaglami i&nbsp;na motorówce</h2>
-          </div>
-          <ul class="courses">
-            <li class="course" data-reveal>
-              <h3>Kurs żeglarski</h3>
-              <p>Przygotowanie do egzaminu na patent żeglarza jachtowego: zajęcia teoretyczne i praktyka na Wiśle.</p>
-              <a class="course__contact" href="tel:+48606884482">Grzegorz Serejko · 606 884 482</a>
-            </li>
-            <li class="course" data-reveal>
-              <h3>Kurs motorowodny</h3>
-              <p>Szkolenie na uprawnienia do prowadzenia łodzi motorowych.</p>
-              <a class="course__contact" href="tel:+48500268104">Michał Misiak · 500 268 104</a>
-            </li>
-            <li class="course" data-reveal>
-              <h3>Szkółka żeglarska</h3>
-              <p>Zajęcia dla dzieci i młodzieży. Latem prowadzimy półkolonie żeglarskie dla dzieci w wieku 6–15 lat.</p>
-              <a class="course__contact" href="tel:+48601373232">Leszek Bartosik · 601 373 232</a>
-            </li>
-          </ul>
-        </div>
-        <figure class="split__photo" data-reveal>
-          <img src="img/szkolenia.webp" width="800" height="531" loading="lazy" decoding="async" alt="Młodzi żeglarze na łódce klasy 29er z czerwonym spinakerem">
-        </figure>
-      </div>
-    </section>
-
-    <section class="section" id="przystan" aria-labelledby="marina-title">
-      <div class="wrap split split--reverse">
-        <div>
-          <div class="section__head">
-            <p class="eyebrow">Przystań</p>
-            <h2 id="marina-title">Stanica przy ul. Rybaki 10</h2>
-            <p>Przyjmujemy jachty, kampery i&nbsp;namioty także od osób spoza klubu. Ceny dla osób niezrzeszonych na sezon 2026.</p>
-          </div>
-          <table class="prices">
-            <caption class="visually-hidden">Wybrane opłaty dla osób niezrzeszonych</caption>
-            <tbody>
-              <tr><th scope="row">Cumowanie jachtu</th><td>30 zł / doba</td></tr>
-              <tr><th scope="row">Wodowanie ze slipu</th><td>40 zł + 50 zł wyciągarka</td></tr>
-              <tr><th scope="row">Kamper lub przyczepa</th><td>80 zł / doba</td></tr>
-              <tr><th scope="row">Pole namiotowe</th><td>30 zł / doba + 5 zł od osoby</td></tr>
-              <tr><th scope="row">Nocleg w pokoju</th><td>50 zł / doba</td></tr>
-              <tr><th scope="row">Samochód na terenie przystani</th><td>30 zł / doba</td></tr>
-            </tbody>
-          </table>
-          <p class="note">W cenie postoju sanitariaty, przy kamperach także prąd. Opłata liczona za każdą rozpoczętą dobę.</p>
-          <div class="actions">
-            <a class="button" href="https://www.morka-plock.pl/pliki/2026/cennik2026.pdf">Pełny cennik 2026 (PDF)</a>
-            <a class="button button--ghost" href="https://www.morka-plock.pl/kamerka">Kamera na żywo <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-        <figure class="split__photo" data-reveal>
-          <img src="img/rejsy.webp" width="900" height="652" loading="lazy" decoding="async" alt="Jacht PK 250 pod pełnymi żaglami na Wiśle w pochmurny dzień">
-        </figure>
-      </div>
-    </section>
-
-    <section class="section section--dark" id="imprezy" aria-labelledby="events-title">
+    <section class="section section--tight" id="galeria" aria-labelledby="life-title">
       <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">Sezon 2026</p>
-          <h2 id="events-title">Kalendarz imprez</h2>
+        <div class="section__head section__head--row">
+          <h2 class="display" id="life-title" data-reveal>Z życia klubu</h2>
+          <a class="link" href="https://www.morka-plock.pl/galeria/" data-reveal>Cała galeria</a>
         </div>
-        <ol class="events">
-          <li data-reveal><time datetime="2026-04-18">18 kwietnia</time><span>Wodowanie pomostów</span></li>
-          <li data-reveal><time datetime="2026-04-25">25 kwietnia</time><span>Wodowanie jednostek</span></li>
-          <li data-reveal><time datetime="2026-05-30">30 maja</time><span>Parada Żeglarska 50-lecia POZŻ</span></li>
-          <li data-reveal><time datetime="2026-07-11">11 lipca</time><span>Regaty w Nowym Duninowie</span></li>
-          <li data-reveal><time datetime="2026-09-05">5 września</time><span>56. Regaty o Puchar Wrzosu</span></li>
-          <li data-reveal><time datetime="2026-09-26">26 września</time><span>XVII Memoriał Rakowskich</span></li>
-          <li data-reveal><time datetime="2026-10-17">17 października</time><span>Wyciąganie jachtów</span></li>
-          <li data-reveal><time datetime="2026-10-24">24 października</time><span>Wyciąganie pomostów</span></li>
-        </ol>
+        <div class="life">
+          <figure class="life__item life__item--wide" data-reveal>
+            <img src="img/puchary.webp" width="1280" height="850" loading="lazy" decoding="async" alt="Uczestnicy obchodów z dyplomami i uniesionymi rękami nad Wisłą">
+          </figure>
+          <figure class="life__item" data-reveal>
+            <img src="img/zaloga.webp" width="1280" height="850" loading="lazy" decoding="async" alt="Dwóch żeglarzy na pokładzie jachtu PK-148">
+          </figure>
+          <figure class="life__item" data-reveal>
+            <img src="img/piknik.webp" width="1280" height="850" loading="lazy" decoding="async" alt="Akordeonista grający na klubowym pikniku">
+          </figure>
+          <figure class="life__item life__item--wide" data-reveal>
+            <img src="img/rejs.webp" width="1280" height="850" loading="lazy" decoding="async" alt="Jacht z załogą płynący po Wiśle pod mostem">
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="o-klubie" aria-labelledby="about-title">
-      <div class="wrap about">
-        <div class="about__text">
-          <div class="section__head">
-            <p class="eyebrow">O klubie</p>
-            <h2 id="about-title">Ponad sześćdziesiąt lat na płockiej Wiśle</h2>
+    <section class="invite" aria-labelledby="invite-title">
+      <img class="invite__image" src="img/rejsy.webp" width="900" height="652" loading="lazy" decoding="async" alt="">
+      <div class="wrap invite__grid">
+        <h2 class="display" id="invite-title" data-reveal>Zapraszamy na przystań</h2>
+        <div data-reveal>
+          <p>Oddział Żeglarsko-Motorowodny PTTK „Morka”, ul. Rybaki 10, 09-400 Płock. W sprawie postoju, wodowania i noclegu zadzwoń do bosmana.</p>
+          <div class="actions">
+            <a class="button button--light" href="tel:+48516067215">Bosman: 516 067 215</a>
+            <a class="button button--outline-light" href="https://www.google.com/maps/search/?api=1&amp;query=Rybaki+10+P%C5%82ock">Wyznacz trasę</a>
           </div>
-          <p>Stanicę przy ul. Rybaki 10 ukończono w 1961 roku. Stoi na nasypie o powierzchni 3000 m², wbudowanym między dwie główki na Wiśle, a jej słupowo-szkieletowa konstrukcja przetrwała nawet zimową powódź zatorową w 1982 roku.</p>
-          <p>W 1963 roku pracownicy budowanego kombinatu petrochemicznego dostali pierwsze żaglówki i rozegrali na Wiśle pierwsze regaty. Jesienią 1964 roku sekcja przyjęła nazwę Klub Wodniaków „Morka”. Dziś jako Oddział Żeglarsko-Motorowodny PTTK szkolimy kolejne pokolenia żeglarzy i organizujemy regaty o Puchar Wrzosu.</p>
         </div>
-        <figure class="about__photo about__photo--old" data-reveal>
-          <img src="img/stanica.webp" width="550" height="406" loading="lazy" decoding="async" alt="Stanica przy ul. Rybaki 10 na dawnej fotografii, w tle Wzgórze Tumskie">
-          <figcaption>Stanica na dawnej fotografii</figcaption>
-        </figure>
-        <figure class="about__photo about__photo--bell" data-reveal>
-          <img src="img/jubileusz.webp" width="800" height="1205" loading="lazy" decoding="async" alt="Pamiątkowy dzwon z okazji 50-lecia Morki obok klubowego sztandaru">
-          <figcaption>Dzwon i sztandar z 50-lecia klubu</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="kontakt" aria-labelledby="contact-title">
-      <div class="wrap contact">
-        <div class="section__head">
-          <p class="eyebrow">Kontakt</p>
-          <h2 id="contact-title">Zapraszamy na przystań</h2>
-          <address class="contact__address">
-            Oddział Żeglarsko-Motorowodny PTTK „Morka”<br>
-            ul. Rybaki 10, 09-400 Płock
-          </address>
-          <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Rybaki+10+P%C5%82ock">Wyznacz trasę <span aria-hidden="true">↗</span></a>
-        </div>
-        <ul class="contact__list">
-          <li><span>Bosman</span><a href="tel:+48516067215">516 067 215</a></li>
-          <li><span>Biuro</span><a href="tel:+48242622543">24 262 25 43</a></li>
-          <li><span>E-mail</span><a href="mailto:morka@morka-plock.pl">morka@morka-plock.pl</a></li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/MorkaPlock">MorkaPlock</a></li>
-          <li><span>Konto</span><span>ING Bank Śląski<br>88 1050 1966 1000 0022 9632 2528</span></li>
-          <li><span>Dane</span><span>NIP 774-23-30-073 · REGON 611408716<br>KRS 0000185893</span></li>
-        </ul>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer__inner">
+  <footer class="footer" id="kontakt">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <span class="brand__name">Morka</span>
+        <span class="brand__place">PTTK Płock</span>
+      </div>
+      <div>
+        <h2 class="footer__title">Klub</h2>
+        <ul class="footer__list">
+          <li><a href="#o-klubie">O klubie</a></li>
+          <li><a href="#szkolenia">Szkolenia</a></li>
+          <li><a href="#przystan">Przystań</a></li>
+          <li><a href="#imprezy">Imprezy</a></li>
+          <li><a href="#aktualnosci">Aktualności</a></li>
+          <li><a href="#galeria">Z życia klubu</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Kontakt</h2>
+        <ul class="footer__list">
+          <li>Bosman: <a href="tel:+48516067215">516 067 215</a></li>
+          <li>Biuro: <a href="tel:+48242622543">24 262 25 43</a></li>
+          <li><a href="mailto:morka@morka-plock.pl">morka@morka-plock.pl</a></li>
+          <li><a href="https://www.facebook.com/MorkaPlock">Facebook: MorkaPlock</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Dane</h2>
+        <ul class="footer__list">
+          <li>ul. Rybaki 10, 09-400 Płock</li>
+          <li>NIP 774-23-30-073 · REGON 611408716</li>
+          <li>KRS 0000185893</li>
+          <li>ING Bank Śląski<br>88 1050 1966 1000 0022 9632 2528</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer__bottom">
       <p>© 2007–2026 Oddział Żeglarsko-Motorowodny PTTK „Morka” w&nbsp;Płocku</p>
-      <a class="link" href="#start">Do góry <span aria-hidden="true">↑</span></a>
+      <a href="#start">Do góry ↑</a>
     </div>
   </footer>
 

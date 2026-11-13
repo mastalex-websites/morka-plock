@@ -99,6 +99,8 @@
     intro.style.opacity = introOpacity.toFixed(3);
     intro.style.visibility = introOpacity > 0 ? "visible" : "hidden";
 
+    document.documentElement.classList.toggle("hero-light", progress > 0.85);
+
     const contentOpacity = span(CONTENT, progress);
     content.style.opacity = contentOpacity.toFixed(3);
     content.style.visibility = contentOpacity > 0 ? "visible" : "hidden";

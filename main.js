@@ -28,6 +28,47 @@ function updateBar() {
 updateBar();
 window.addEventListener("scroll", updateBar, { passive: true });
 
+document.querySelectorAll("[data-scroll]").forEach((button) => {
+  const track = document.getElementById(button.dataset.scroll);
+  button.addEventListener("click", () => {
+    const step = track.firstElementChild.getBoundingClientRect().width + 20;
+    track.scrollBy({ left: step * Number(button.dataset.direction), behavior: "smooth" });
+  });
+});
+
+function countUp(element) {
+  const target = Number(element.dataset.count);
+  const suffix = element.dataset.suffix || "";
+  const start = performance.now();
+
+  function step(now) {
+    const t = Math.min(1, (now - start) / 1400);
+    const eased = 1 - (1 - t) ** 3;
+    element.textContent = Math.round(target * eased) + suffix;
+    if (t < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+const counters = document.querySelectorAll("[data-count]");
+const animateCounters = matchMedia("(prefers-reduced-motion: no-preference)").matches;
+
+if (animateCounters && "IntersectionObserver" in window) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        countUp(entry.target);
+        counterObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  counters.forEach((element) => counterObserver.observe(element));
+}
+
 const revealed = document.querySelectorAll("[data-reveal]");
 
 if ("IntersectionObserver" in window) {
